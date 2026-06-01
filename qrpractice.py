@@ -4,7 +4,7 @@ from pathlib import Path
 import easyocr
 
 ## folder where your pictures are stored
-image_folder = Path(r"C:\Users\Jack\Pictures\Jack QR Code Test")
+image_folder = Path("/mnt/c/Users/Jack/Pictures/Jack QR Code Test")
 
 
 ## change only this line to test a different photo
@@ -167,8 +167,7 @@ else:
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
 
-## show final image
-cv2.imshow("QR Inspection", img_copy)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+## save final image
+output_path = Path("output") / f"result_{file_name}"
+cv2.imwrite(str(output_path), img_copy)
+print("Saved result image to:", output_path)
